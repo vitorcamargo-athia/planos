@@ -1,0 +1,56 @@
+.is-fullheight{
+  height:100% !important;
+}
+.main .banner .banner-content .content .content-title h2{
+  color: #636aa4 !important;
+}
+
+.panel.is-info .panel-heading {
+  background-color: #636aa4 !important;
+  color: #fff;
+  border-radius: 25px;
+}
+
+.panel {
+  panel-radius: 10px;
+  border-top-left-radius: 25px !important;
+  border-top-right-radius: 25px !important;
+}
+
+.b-steps .steps .step-items .step-item.is-previous .step-marker {
+  color: white;
+  background-color: #636aa4 !important;
+}
+
+.b-steps .steps .step-items .step-item.is-active .step-marker {
+  background-color: white;
+  border-color: #636aa4 !important;
+  color: #636aa4 !important;
+}
+
+h1{
+  font-family: 'Gilroy Regular', "Gilroy", sans-serif !important;
+}
+
+label{
+  margin-bottom: 0 !important;
+}
+
+
+
+@font-face {
+  font-family: "Gilroy Regular" !important;
+  src: url("http://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.eot");
+  /* IE9*/
+  src: url("http://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */
+  url("http://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.woff2") format("woff2"),
+    /* chrome firefox */
+  url("http://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.woff") format("woff"),
+    /* chrome firefox */
+  url("http://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.ttf") format("truetype"),
+    /* chrome firefox opera Safari, Android, iOS 4.2+*/
+  url("http://db.onlinewebfonts.com/t/1dc8ecd8056a5ea7aa7de1db42b5b639.svg#Gilroy") format("svg");
+  /* iOS 4.1- */
+}
+
