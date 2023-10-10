@@ -156,10 +156,11 @@ import AnexoDoc from "./AnexoDoc";
 import { TheMask } from "vue-the-mask";
 import setProposta from "~/mixins/setProposta";
 import { cpf } from "cpf-cnpj-validator";
+import Url from "~/mixins/Url";
 
 export default {
   name: "Beneficiario",
-  mixins: [setProposta],
+  mixins: [setProposta, Url],
   mounted() {
     this.grauParentesco = this.getGrau();
     if (this.endereco) {
