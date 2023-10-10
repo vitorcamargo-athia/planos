@@ -30,10 +30,12 @@
 <script>
 import hmacSHA256 from 'crypto-js/hmac-sha256';
 import Base64 from 'crypto-js/enc-base64';
+import Url from '../mixins/Url';
 
 export default {
     name: 'assinatura',
     layout: 'blank',
+    mixins: [Url],
     data() {
         return {
             data: null,
@@ -44,17 +46,17 @@ export default {
             cancelPrepare: null,
             cancelSuccess: null,
             signPrepare: null,
-            urlHomolog: 'https://floriculturaathia.com.br/teste/api-assinatura-digital.php?app=',
-            urlProd: 'https://portal.athia.com.br/site/api/api-assinatura-digital.php?app=',
-            url: null,
+            // urlHomolog: 'https://floriculturaathia.com.br/teste/api-assinatura-digital.php?app=',
+            // urlProd: 'https://portal.athia.com.br/site/api/api-assinatura-digital.php?app=',
+            // url: null,
             contrato: null,
             cod_doc: null
         }
     },
     mounted() {
         // if (window.location.hostname == "localhost"){
-        this.token = '6830ce18-ee25-4861-b337-c1db7fe79df0';
-        this.url = this.urlHomolog;
+        // this.token = '6830ce18-ee25-4861-b337-c1db7fe79df0';
+        // this.url = this.urlHomolog;
         // } else {
         //    this.token = 'a7063c4f-52bb-4f53-a5a4-5e6733e337f5';
         //   this.url = this.urlProd;

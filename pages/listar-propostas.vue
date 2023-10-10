@@ -41,7 +41,7 @@
 <script>
 import CheckIcon from '~icons/mdi/check-bold';
 import MischeckIcon from '~icons/icomoon-free/cross';
-import U from '~/mixins/Url';
+import Url from '~/mixins/Url';
 
 export default {
     name: "finalizacao",
