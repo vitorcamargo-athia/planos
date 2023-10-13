@@ -10,7 +10,7 @@
         </h6>
         <h6 class="title is-4 has-text-centered"> Caso precise de ajuda, ligue para (18) 2101-5555 </h6>
       </div>
-      <div class="box" v-else>
+      <div class="box" v-else-if="resumo">
         <a :href="'/listar-propostas?vend=' + $route.query.vend">
           <BackIcon /> Voltar
         </a>
@@ -44,6 +44,11 @@ export default {
   layout: 'blank',
   components: { BackIcon },
   mixins: [Url],
+  data() {
+    return {
+      resumo: null
+    }
+  },
   async mounted() {
     let fdata = new FormData();
 
