@@ -44,10 +44,15 @@ import MischeckIcon from '~icons/icomoon-free/cross';
 import Url from '~/mixins/Url';
 
 export default {
-    name: "finalizacao",
+    name: "ListarPropostas",
     layout: 'blank',
     components: { CheckIcon, MischeckIcon },
-    mixins:[Url],
+    data(){
+        return{
+            propostas: []
+        }
+    },
+    mixins: [Url],
     async mounted() {
         let fdata = new FormData();
 
