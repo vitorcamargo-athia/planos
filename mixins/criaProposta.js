@@ -88,7 +88,6 @@ export default {
             //GUARDA COD DA PROPOSTA
 
             let fdata = new FormData();
-            let codigo;
 
             fdata.append("app", "getproposta");
             fdata.append("cpf", this.$store.state.proposta.cpf);
@@ -101,7 +100,12 @@ export default {
                     'User-Agent': 'My-App',
                     'Accept': '*/*',
                 }
-            }).then((response) => codigo = response.data.toString());
+            }).then((response) => this.codigo = response.data.toString());
+        }
+    },
+    data(){
+        return{
+            codigo: null
         }
     }
 }

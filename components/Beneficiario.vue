@@ -46,7 +46,17 @@
               <b-field label="Data de nascimento *">
                 <input type="date" class="input" v-model="valueFields.dataNasc" :required="!valueFields.dataNasc"
                   @input="updateValue('dataNasc', $event.target.value)" id="v-card-number" />
+              </b-field>
 
+              <b-field label="Estado Civil">
+                <b-select v-model="valueFields.estCivil" @change.native="updateValue('estCivil', $event.target.value)">
+                  <option value="1">Solteir{{ genero }}</option>
+                  <option value="2">Casad{{ genero }}</option>
+                  <option value="3">Viúv{{ genero }}</option>
+                  <option value="4">Divorciad{{ genero }}</option>
+                  <option value="7">União Estável</option>
+                  <option value="5">Outros</option>
+                </b-select>
               </b-field>
 
               <b-field label="Parentesco *" expanded>
@@ -88,7 +98,7 @@
                   </b-field>
                   <b-field label="Número *">
                     <input class="input" v-model.lazy="valueFields.numero" type="text" required
-                      @input="updateValue('numero', $event.target.value)" />
+                      @blur="updateValue('numero', $event.target.value)" />
                   </b-field>
                   <b-field label="Complemento" expanded>
                     <input class="input" v-model.lazy="valueFields.complemento" type="text"
@@ -174,6 +184,9 @@ export default {
     }
   },
   computed: {
+    genero() {
+      return this.valueFields.sexo == 'f' ? 'a' : 'o';
+    },
     cpfInvalido() {
       return !cpf.isValid(this.valueFields.cpf) && this.valueFields.cpf.length == 11;
     }
@@ -206,6 +219,7 @@ export default {
         'uf': this.valueFields.uf,
         'celular': this.valueFields.celular,
         'cidade': this.valueFields.cidade,
+        'estCivil': this.valueFields.estCivil
 
       }, 0); //inicial 0; investigar problema de auto increment ao digitar
       this.$emit("change", {
@@ -220,6 +234,7 @@ export default {
           'uf': this.valueFields.uf,
           'celular': this.valueFields.celular,
           'cidade': this.valueFields.cidade,
+          'estCivil': this.valueFields.estCivil
         },
         valor: value,
       });
@@ -301,6 +316,7 @@ export default {
       bairro: "",
       cidade: "",
       uf: "",
+      estCivil: ""
 
     },
     crematorio: false

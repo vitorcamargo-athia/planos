@@ -39,29 +39,19 @@ export default {
     data() {
         return {
             data: null,
-            token: null,
             crypt: null,
             error: null,
             success: null,
             cancelPrepare: null,
             cancelSuccess: null,
             signPrepare: null,
-            // urlHomolog: 'https://floriculturaathia.com.br/teste/api-assinatura-digital.php?app=',
-            // urlProd: 'https://portal.athia.com.br/site/api/api-assinatura-digital.php?app=',
-            // url: null,
+            
             contrato: null,
             cod_doc: null
         }
     },
     mounted() {
-        // if (window.location.hostname == "localhost"){
-        // this.token = '6830ce18-ee25-4861-b337-c1db7fe79df0';
-        // this.url = this.urlHomolog;
-        // } else {
-        //    this.token = 'a7063c4f-52bb-4f53-a5a4-5e6733e337f5';
-        //   this.url = this.urlProd;
-        // }
-
+        
         let uri = window.location.search.substring(1);
         let params = new URLSearchParams(uri);
         this.contrato = params.get("contrato");
@@ -71,7 +61,7 @@ export default {
     methods: {
         get(contrato) {
             this.$axios
-                .get(this.url + 'getDadosContrato&cod_contrato=' + contrato + '&cod_doc=' + this.cod_doc + "&tipo=presential&email=&telefone=&pap=true", {
+                .get(this.url_assinatura + 'getDadosContrato&cod_contrato=' + contrato + '&cod_doc=' + this.cod_doc + "&tipo=presential&email=&telefone=&pap=true", {
                     headers: {
                         'x-api-key': 'e949f8ee3299e48ed653375017868b9b6d7a2c7b06191278eebaa9766ee9ab55'
                     }
@@ -92,11 +82,7 @@ export default {
 
             var options = {
                 method: 'POST',
-                url: '/api/templates/' + this.data.clicksign.template + '/documents',
-                params: {
-                    access_token: this.token,
-                    key: this.data.clicksign.template
-                },
+                url: '/api/templates/' + this.data.clicksign.template + '/documents?access_token=' + this.token,
 
                 headers: {
                     'Content-Type': 'application/json'
@@ -144,36 +130,36 @@ export default {
                 this.error = "Não foi possível cancelar o documento para assinatura. (" + error.response.data + ")";
             }
         },
-        async webHook(uuidDoc) {
-            var options = {
-                method: 'POST',
-                url: '/api/hook',
-                params: {
-                    tokenAPI: this.token,
-                    cryptKey: this.crypt,
-                    idDoc: uuidDoc
-                },
+        // async webHook(uuidDoc) {
+        //     var options = {
+        //         method: 'POST',
+        //         url: '/api/hook',
+        //         params: {
+        //             tokenAPI: this.token,
+        //             cryptKey: this.crypt,
+        //             idDoc: uuidDoc
+        //         },
 
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
 
-                data: {
-                    url: this.url + 'webhook'
-                }
-            };
+        //         data: {
+        //             url: this.url + 'webhook'
+        //         }
+        //     };
 
-            try {
-                await this.$axios.request(options);
-            } catch (error) {
-                this.error = "Não foi possível criar o WebHook do Documento. (" + error.response + ")";
-            }
-        },
+        //     try {
+        //         await this.$axios.request(options);
+        //     } catch (error) {
+        //         this.error = "Não foi possível criar o WebHook do Documento. (" + error.response + ")";
+        //     }
+        // },
         async registraSolicitacao(contrato, uuidDoc, cod_doc) {
 
             var options = {
                 method: 'POST',
-                url: this.url + 'registrarSolicitacao',
+                url: this.url_assinatura + 'registrarSolicitacao',
                 headers: { 'Content-Type': 'multipart/form-data', 'x-api-key': 'e949f8ee3299e48ed653375017868b9b6d7a2c7b06191278eebaa9766ee9ab55' },
                 data: {
                     cod_contrato: contrato,

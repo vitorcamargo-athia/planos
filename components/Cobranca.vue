@@ -268,7 +268,7 @@ export default {
 
       await this.createProposta();
 
-      this.$router.push('/finalizacao?vend=' + this.$route.query.vend + "&cod_proposta=" + codigo);
+      this.$router.push('/finalizacao?vend=' + this.$route.query.vend + "&cod_proposta=" + this.codigo);
     },
 
     updateCartao({ campo, valor }) {

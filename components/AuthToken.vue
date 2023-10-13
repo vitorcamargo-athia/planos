@@ -5,13 +5,13 @@
         <div
           class="form__group form__pincode"
           :class="{
-            'form__group--success': tokenMatch == 1,
-            'form__group--error': tokenMatch == 0,
+            'form__group--success': tkMatch == 1,
+            'form__group--error': tkMatch == 0,
           }"
         >
           <input
             type="tel"
-            v-model="token[i - 1]"
+            v-model="tk[i - 1]"
             maxlength="1"
             placeholder="·"
             :id="'n' + (i - 1)"
@@ -35,15 +35,15 @@ export default {
   mixins: [setProposta],
   name: "CodeInput",
   data() {
-    var token = [];
+    var tk = [];
 
-    return { token, tam: 0, ativou: false };
+    return { tk, tam: 0, ativou: false };
   },
   mounted() {
     for (let i = 0; i < this.pass.toString().length; i++) {
-      this.token.push("");
+      this.tk.push("");
     }
-    this.tam = this.token.length;
+    this.tam = this.tk.length;
   },
   props: ["pass", 'disable'],
   methods: {
@@ -54,7 +54,7 @@ export default {
       var clipboardData = e.clipboardData || window.clipboardData;
       var pastedData = clipboardData.getData("Text");
 
-      this.token = pastedData.substring(0, this.tam).split("");
+      this.tk = pastedData.substring(0, this.tam).split("");
     },
     tecla(ev, index) {
       var key = ev.keyCode;
@@ -68,11 +68,11 @@ export default {
         this.focus(index + 1);
       else if (key == 46)
         //DELETE
-        this.token.splice(index, 1);
+        this.tk.splice(index, 1);
       else if (key == 8) {
         // BACKSPACE
-        if (this.token[index] != "") {
-          this.token[index] = "";
+        if (this.tk[index] != "") {
+          this.tk[index] = "";
         } else {
           this.focus(index - 1);
         }
@@ -81,30 +81,30 @@ export default {
       }
     },
     remove(index) {
-      this.token.splice(index - 1, 1);
+      this.tk.splice(index - 1, 1);
     },
     focus(index) {
       if (index >= 0 && index < this.tam) {
         document.getElementById("n" + index).focus();
 
-        var pos = this.token[index - 1] == "" ? 0 : 1;
+        var pos = this.tk[index - 1] == "" ? 0 : 1;
         document.getElementById("n" + index).setSelectionRange(0, pos);
       }
     },
   },
   computed: {
-    tokenMatch() {
+    tkMatch() {
       var temnulo = false;
-      this.token.forEach(e => {
+      this.tk.forEach(e => {
         temnulo |= e == '';
       })
       if (temnulo) return -1;
 
-      var token = this.token.join('');
-      var match = this.pass == token;
+      var tk = this.tk.join('');
+      var match = this.pass == tk;
 
       if(match){
-        this.$emit("change", {validado:true, token: this.token.join('')});
+        this.$emit("change", {validado:true, tk: this.tk.join('')});
       }
 
       return match ? 1 : 0;

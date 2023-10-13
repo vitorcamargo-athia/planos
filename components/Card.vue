@@ -24,7 +24,7 @@
 
 
         </div>
-        <NuxtLink class="rodolfo" :to="'/contratar?plano='+title">
+        <NuxtLink class="rodolfo" :to="'/contratar?plano='+title+($route.query.vend ? '&vend='+$route.query.vend : '')">
           <div class="buttons">
             <b-button type="is-primary" expanded>Contratar</b-button>
           </div>

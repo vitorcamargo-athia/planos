@@ -55,8 +55,8 @@ export default defineComponent({
     mounted() {
         // if (window.location.hostname == "localhost") {
         //this.token = 'd796f29c-0a7b-448c-a8f7-aeb476ba5c41';
-        this.token = '6830ce18-ee25-4861-b337-c1db7fe79df0';
-        this.url = this.urlHomolog;
+        // this.token = '6830ce18-ee25-4861-b337-c1db7fe79df0';
+        // this.url = this.urlHomolog;
         /*  } else {
               this.token = 'd796f29c-0a7b-448c-a8f7-aeb476ba5c41';
               this.url = this.urlProd;
