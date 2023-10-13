@@ -430,7 +430,7 @@ export default {
       'https://api.nuxtjs.dev/mountains'
     ).then(res => res.json())
   },
-  mounted() {
+  async mounted() {
     this.currentVendedor = this.$route.query.vend;
 
     if (this.$route.query.vend) {
@@ -440,19 +440,23 @@ export default {
 
       var data = new FormData();
 
-      data.append("func", "getvendedor");
+      data.append("app", "getvendedor");
       data.append("vend", this.currentVendedor);
-
-      let body = { func: "getvendedor", vend: this.currentVendedor };
 
       // console.log(body);
 
       let response;
-      call('', data, rs => {
-        response = rs;
 
-        this.vendedorNome = response.NOME_VENDEDOR;
-      });
+      await this.$axios.post(this.url, data, {
+
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'x-api-key': 'e949f8ee3299e48ed653375016868b9b6d7a2c7b0619127ccebaa9766ee9ab57',
+          'User-Agent': 'My-App',
+          'Accept': '*/*',
+        }
+      }).then((rs) => { response = rs.data; this.vendedorNome = response.NOME_VENDEDOR});
+
     }
 
     setTimeout(() => {
