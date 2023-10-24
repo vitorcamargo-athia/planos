@@ -51,8 +51,8 @@ export default {
   },
   proxy: {
     '/api': {
-      target: 'https://sandbox.clicksign.com/api/v1',
-      //target: 'https://app.clicksign.com/api/v1',
+      //target: 'https://sandbox.clicksign.com/api/v1',
+      target: 'https://app.clicksign.com/api/v1',
       changeOrigin: true,
       pathRewrite: { '^/api': '' },
     }

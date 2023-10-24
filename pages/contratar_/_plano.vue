@@ -53,7 +53,6 @@ import Swal from 'sweetalert2'
 import setProposta from "~/mixins/setProposta";
 import Endereco from "../../components/Beneficiario.vue";
 import Finalizacao from "../../components/Finalizacao";
-import call from "../../api";
 import { cpf } from "cpf-cnpj-validator";
 
 export default {
@@ -387,11 +386,11 @@ export default {
       // console.log(body);
 
       let response;
-      call('', data, rs => {
-        response = rs;
+      // call('', data, rs => {
+      //   response = rs;
 
-        this.vendedorNome = response.NOME_VENDEDOR;
-      });
+      //   this.vendedorNome = response.NOME_VENDEDOR;
+      // });
     }
 
     setTimeout(() => {

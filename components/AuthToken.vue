@@ -104,7 +104,7 @@ export default {
       var match = this.pass == tk;
 
       if(match){
-        this.$emit("change", {validado:true, tk: this.tk.join('')});
+        this.$emit("change", {validado:true, token: this.tk.join('')});
       }
 
       return match ? 1 : 0;

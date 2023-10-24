@@ -55,7 +55,6 @@ import Swal from 'sweetalert2'
 import setProposta from "~/mixins/setProposta";
 import Endereco from "../components/Beneficiario.vue";
 import Finalizacao from "../components/Finalizacao";
-import call from "../api";
 import { cpf } from "cpf-cnpj-validator";
 import URL from '~/mixins/Url';
 
